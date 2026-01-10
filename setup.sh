@@ -46,9 +46,9 @@ fi
 # --- 2. Install Software ---
 echo "--- Installing Software ---"
 
-# Install Wget, curl, Tmux, Zsh
+# Install Wget, curl, unzip, Tmux, Zsh
 # In future oh-my-zsh
-for pkg in wget curl tmux zsh; do
+for pkg in unzip wget curl tmux zsh; do
     if ! command -v $pkg &> /dev/null; then
         echo "Installing $pkg..."
         sudo $PKG_MGR $pkg
