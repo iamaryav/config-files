@@ -23,6 +23,26 @@ fi
 echo "--- Updating Repositories ---"
 sudo $UPDATE || true
 
+# --- 2. Install Sudo (if missing) ---
+if ! command -v sudo &> /dev/null; then
+    echo "Sudo not found. Installing sudo..."
+    # We must be root to install sudo without sudo
+    if [ "$EUID" -ne 0 ]; then
+        echo "Error: 'sudo' is missing and you are not root. Cannot install it."
+        exit 1
+    fi
+    $PKG_MGR sudo
+    echo "✓ sudo installed."
+fi
+
+# --- 3. Set Sudo Variable ---
+# Now we know sudo exists (or we are root)
+if [ "$EUID" -eq 0 ]; then
+  SUDO="" 
+else
+  SUDO="sudo"
+fi
+
 # --- 2. Install Software ---
 echo "--- Installing Software ---"
 
@@ -36,12 +56,11 @@ for pkg in wget curl tmux zsh; do
         echo "✓ $pkg is already installed."
     fi
 done
-
 # Install Latest Neovim (Binary)
 if ! command -v nvim &> /dev/null; then
     echo "Installing latest Neovim..."
-    wget -q https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-    sudo rm -rf /opt/nvim
+    wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    sudo rm -rf /opt/nvim-linux64
     sudo tar -C /opt -xzf nvim-linux64.tar.gz
     sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
     rm nvim-linux64.tar.gz
