@@ -60,10 +60,10 @@ done
 if ! command -v nvim &> /dev/null; then
     echo "Installing latest Neovim..."
     wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-    sudo rm -rf /opt/nvim-linux64
-    sudo tar -C /opt -xzf nvim-linux64.tar.gz
-    sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
-    rm nvim-linux64.tar.gz
+    sudo rm -rf /opt/nvim-linux-x86_64
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+    rm nvim-linux-x86_64.tar.gz
     echo "✓ Neovim (Latest) installed."
 else
     echo "✓ nvim is already installed."
