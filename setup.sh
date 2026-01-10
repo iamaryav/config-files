@@ -26,7 +26,8 @@ sudo $UPDATE || true
 # --- 2. Install Software ---
 echo "--- Installing Software ---"
 
-# Install Wget, Tmux, Zsh
+# Install Wget, curl, Tmux, Zsh
+# In future oh-my-zsh
 for pkg in wget curl tmux zsh; do
     if ! command -v $pkg &> /dev/null; then
         echo "Installing $pkg..."
