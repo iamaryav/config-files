@@ -92,7 +92,9 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', '<C-e>', ':Lex<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-e>', ':Lex<CR>', { silent = true })
+vim.keymap.set('n', '<C-e>', ':Ex<CR>', { silent = true })
+vim.g.netrw_browse_split = 0 -- replaces the explorer with file
 vim.g.netrw_banner = 0 -- Hide the top help banner
 vim.g.netrw_winsize = 20 -- Set width to 20%
 
