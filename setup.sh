@@ -92,7 +92,8 @@ install_config() {
 mkdir -p ~/.config/nvim
 
 install_config "$REPO_BASE/init.lua"    "$HOME/.config/nvim/init.lua"
-install_config "$REPO_BASE/.bashrc"     "$HOME/.bashrc"
+# if needed uncomment
+# install_config "$REPO_BASE/.bashrc"     "$HOME/.bashrc"
 install_config "$REPO_BASE/.tmux.conf"  "$HOME/.tmux.conf"
 install_config "$REPO_BASE/.vimrc"      "$HOME/.vimrc"
 install_config "$REPO_BASE/.zshrc"      "$HOME/.zshrc"
