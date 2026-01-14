@@ -92,26 +92,27 @@ install_config() {
 mkdir -p ~/.config/nvim
 
 install_config "$REPO_BASE/init.lua"    "$HOME/.config/nvim/init.lua"
-# if needed uncomment
-# install_config "$REPO_BASE/.bashrc"     "$HOME/.bashrc"
 install_config "$REPO_BASE/.tmux.conf"  "$HOME/.tmux.conf"
 install_config "$REPO_BASE/.vimrc"      "$HOME/.vimrc"
-install_config "$REPO_BASE/.zshrc"      "$HOME/.zshrc"
+# if needed uncomment
+# install_config "$REPO_BASE/.bashrc"     "$HOME/.bashrc"
+# install_config "$REPO_BASE/.zshrc"      "$HOME/.zshrc"
 
 # --- 4. Set Zsh as Default Shell ---
-echo "--- Configuring Shell ---"
-
-ZSH_PATH=$(which zsh)
-CURRENT_SHELL=$(getent passwd $USER_NAME | cut -d: -f7)
-
-if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
-    echo "Changing default shell to zsh..."
-    # Using usermod is easier in scripts as it utilizes the existing sudo session
-    sudo usermod -s "$ZSH_PATH" "$USER_NAME"
-    echo "✓ Default shell changed to zsh."
-else
-    echo "✓ zsh is already the default shell."
-fi
+# configure with oh-my-zsh once comfortable
+# echo "--- Configuring Shell ---"
+#
+# ZSH_PATH=$(which zsh)
+# CURRENT_SHELL=$(getent passwd $USER_NAME | cut -d: -f7)
+#
+# if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
+#     echo "Changing default shell to zsh..."
+#     # Using usermod is easier in scripts as it utilizes the existing sudo session
+#     sudo usermod -s "$ZSH_PATH" "$USER_NAME"
+#     echo "✓ Default shell changed to zsh."
+# else
+#     echo "✓ zsh is already the default shell."
+# fi
 
 echo "--- Setup Complete! ---"
 echo "Please log out and log back in for the shell change to take effect."
