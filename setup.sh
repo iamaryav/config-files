@@ -51,7 +51,7 @@ echo "--- Installing Software ---"
 for pkg in unzip wget curl tmux zsh; do
     if ! command -v $pkg &> /dev/null; then
         echo "Installing $pkg..."
-        sudo $PKG_MGR $pkg
+        $SUDO $PKG_MGR $pkg
     else
         echo "✓ $pkg is already installed."
     fi
