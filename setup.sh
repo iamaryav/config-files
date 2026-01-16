@@ -46,7 +46,7 @@ fi
 # --- 2. Install Software ---
 echo "--- Installing Software ---"
 
-# Install Wget, curl, unzip, Tmux, Zsh
+# Install wget, curl, unzip, tmux, zsh
 # In future oh-my-zsh
 for pkg in unzip wget curl tmux zsh; do
     if ! command -v $pkg &> /dev/null; then
