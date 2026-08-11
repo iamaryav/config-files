@@ -101,6 +101,9 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- vim.keymap.set('n', '<C-e>', ':Lex<CR>', { silent = true })
 vim.keymap.set("n", "<C-e>", ":Ex<CR>", { silent = true })
+vim.keymap.set("n", "<leader>m", "<cmd>RenderMarkdown toggle<CR>", {
+	desc = "Toggle Markdown rendering",
+})
 vim.g.netrw_browse_split = 0 -- replaces the explorer with file
 vim.g.netrw_banner = 0 -- Hide the top help banner
 vim.g.netrw_winsize = 20 -- Set width to 20%
@@ -740,6 +743,28 @@ require("lazy").setup({
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
+	},
+
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
+	},
+
+	{
+		"GCBallesteros/jupytext.nvim",
+		config = function()
+			require("jupytext").setup({
+				style = "markdown",
+				output_extension = "md",
+				force_ft = "markdown",
+			})
+		end,
+	},
+
+	{
+		"benlubas/molten-nvim",
+		version = "^1.0.0",
+		build = ":UpdateRemotePlugins",
 	},
 }, {
 	ui = {
